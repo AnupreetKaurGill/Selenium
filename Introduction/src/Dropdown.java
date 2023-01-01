@@ -55,6 +55,24 @@ public class Dropdown {
 
 		System.out.println(driver.findElement(By.id("divpaxinfo")).getText());
 		
+		//Dynamic dropdown
+		
+		driver.findElement(By.id("ctl00_mainContent_ddl_originStation1_CTXT")).click();
+		
+		driver.findElement(By.xpath("//a[@value='BLR']")).click();     //From 
+		Thread.sleep(2000);
+		
+		// destination location   
+		
+		//driver.findElement(By.xpath("(//a[@value='MAA'])[2]")).click();   //with indexes
+		
+		//parent-child relationships
+		
+		driver.findElement(By.xpath("//div[@id='glsctl00_mainContent_ddl_destinationStation1_CTNR'] //a[@value='MAA']")).click();
+		
+		
+		Thread.sleep(2000);
+		
 		driver.close();
 
 	}
