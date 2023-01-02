@@ -70,8 +70,9 @@ public class Dropdown {
 		
 		driver.findElement(By.xpath("//div[@id='glsctl00_mainContent_ddl_destinationStation1_CTNR'] //a[@value='MAA']")).click();
 		
+		//current date calendar
+		driver.findElement(By.cssSelector(".ui-state-default.ui-state-highlight.ui-state-active")).click();
 		
-		Thread.sleep(2000);
 		
 		driver.close();
 
