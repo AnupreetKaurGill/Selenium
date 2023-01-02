@@ -25,6 +25,35 @@ public class Checkbox {
 		
 		System.out.println(driver.findElements(By.cssSelector("input[type='checkbox']")).size());
 		
+
+		// check WebElement states   (sometimes isEnabled() method does not work)
+		
+		// System.out.println(driver.findElement(By.name("ctl00$mainContent$view_date2")).isEnabled());
+
+		System.out.println(driver.findElement(By.id("Div1")).getAttribute("style"));
+
+		driver.findElement(By.id("ctl00_mainContent_rbtnl_Trip_1")).click();
+
+		System.out.println(driver.findElement(By.id("Div1")).getAttribute("style"));
+
+		if(driver.findElement(By.id("Div1")).getAttribute("style").contains("1"))
+
+		{
+
+		System.out.println("its enabled");
+
+		Assert.assertTrue(true);
+
+		}
+
+		else
+
+		{
+
+		Assert.assertTrue(false);
+
+		}
+		
 		driver.close();
 		
 	}
