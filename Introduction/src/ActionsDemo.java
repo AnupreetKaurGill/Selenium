@@ -20,7 +20,7 @@ public class ActionsDemo {
 		
 		Actions a = new Actions(driver);
 		a.moveToElement(driver.findElement(By.id("twotabsearchtextbox"))).click().keyDown(Keys.SHIFT).sendKeys("hello").build().perform();
-		a.moveToElement(move).contextClick().build().perform();
+		a.moveToElement(move).contextClick().build().perform();     //right click
 
 		
 	}
