@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Loan Department]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Regression(failed)">
+    <groups>
+      <run>
+        <exclude name="Smoke"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="test.day4">
+        <methods>
+          <include name="WebloginHomeLoan"/>
+        </methods>
+      </class> <!-- test.day4 -->
+      <class name="test.day1">
+        <methods>
+          <include name="afSyite"/>
+          <include name="Demo"/>
+          <include name="lastexecution"/>
+        </methods>
+      </class> <!-- test.day1 -->
+      <class name="test.day3">
+        <methods>
+          <include name="MobilesignoutcarLoan"/>
+          <include name="APIcarLoan"/>
+          <include name="afterevery"/>
+          <include name="WebloginCarLoan"/>
+          <include name="afteclas"/>
+          <include name="beforeevery"/>
+          <include name="Bfsuite"/>
+          <include name="befoclas"/>
+        </methods>
+      </class> <!-- test.day3 -->
+    </classes>
+  </test> <!-- Regression(failed) -->
+</suite> <!-- Failed suite [Loan Department] -->
