@@ -1,6 +1,7 @@
 package automation;
 
 import java.time.Duration;
+
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -12,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import automation.pageobjects.LandingPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class StandAloneTest {
@@ -26,6 +28,8 @@ public class StandAloneTest {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
 		driver.get("https://rahulshettyacademy.com/client");
+		
+		LandingPage landingPage = new LandingPage(driver);
 		
 		driver.findElement(By.id("userEmail")).sendKeys("anshika@gmail.com");
 		driver.findElement(By.id("userPassword")).sendKeys("Iamking@000");
