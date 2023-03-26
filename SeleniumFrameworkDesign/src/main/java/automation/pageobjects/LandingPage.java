@@ -46,6 +46,12 @@ WebDriver driver;
 		
 	}
 	
+	public String getErrorMessage()
+	{
+		waitForWebElementToAppear(errorMessage);
+		return errorMessage.getText();
+	}
+	
 	public void goTo()
 	{
 		driver.get("https://rahulshettyacademy.com/client");

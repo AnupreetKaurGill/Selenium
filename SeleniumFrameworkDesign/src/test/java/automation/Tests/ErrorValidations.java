@@ -25,38 +25,18 @@ import automation.pageobjects.LandingPage;
 import automation.pageobjects.ProductCatalogue;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class SubmitOrderTest extends BaseTest {
+public class ErrorValidations extends BaseTest {
 
 	
 		// TODO Auto-generated method stub
 	
-	
 	@Test
-	public void submitOrder() throws InterruptedException, IOException {
-		
-		String productName = "ZARA COAT 3";
-		
-		
-		ProductCatalogue productCatalogue = landingPage.loginApplication("anshika@gmail.com","Iamking@000");
-		List<WebElement>products=productCatalogue.getProductList();
-		productCatalogue.addProductToCart(productName);
-		CartPage cartPage = productCatalogue.goToCartPage();
-		
-		Boolean match = 	cartPage.VerifyProductDisplay(productName);
-		Assert.assertTrue(match);
-		
-		CheckoutPage checkoutPage = cartPage.goToCheckout();
-		checkoutPage.selectCountry("india");
-		
-		ConfirmationPage confirmationPage = checkoutPage.submitOrder();
-		String confirmMessage = confirmationPage.getConfirmationMessage();
-		
-		Assert.assertTrue(confirmMessage.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
-		
-		
-		
+	public void LoginErrorValidation() throws IOException, InterruptedException {
+
 	
+		landingPage.loginApplication("anshika@gmail.com", "Iamki000");
+		Assert.assertEquals("Incorrect email or password.", landingPage.getErrorMessage());
 
 	}
-
+	
 }
