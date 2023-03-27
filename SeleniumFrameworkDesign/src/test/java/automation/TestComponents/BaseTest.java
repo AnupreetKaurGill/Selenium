@@ -64,7 +64,7 @@ public class BaseTest {
 		
 	}
 	
-	@BeforeMethod()
+	@BeforeMethod(alwaysRun=true)
 	public LandingPage launchApplication() throws IOException
 	{
 		
@@ -76,7 +76,7 @@ public class BaseTest {
 		
 	}
 	
-    @AfterMethod()
+    @AfterMethod(alwaysRun=true)
 	
 	public void tearDown()
 	{

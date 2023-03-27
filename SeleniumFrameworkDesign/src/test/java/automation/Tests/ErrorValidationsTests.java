@@ -30,7 +30,7 @@ public class ErrorValidationsTests extends BaseTest {
 	
 		// TODO Auto-generated method stub
 	
-	@Test
+	@Test(groups= {"ErrorHandling"})
 	public void LoginErrorValidation() throws IOException, InterruptedException {
 
 	
