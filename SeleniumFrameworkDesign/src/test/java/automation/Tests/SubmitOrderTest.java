@@ -22,6 +22,7 @@ import automation.pageobjects.CartPage;
 import automation.pageobjects.CheckoutPage;
 import automation.pageobjects.ConfirmationPage;
 import automation.pageobjects.LandingPage;
+import automation.pageobjects.OrderPage;
 import automation.pageobjects.ProductCatalogue;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -29,12 +30,10 @@ public class SubmitOrderTest extends BaseTest {
 
 	
 		// TODO Auto-generated method stub
-	
+	String productName = "ZARA COAT 3";
 	
 	@Test
 	public void submitOrder() throws InterruptedException, IOException {
-		
-		String productName = "ZARA COAT 3";
 		
 		
 		ProductCatalogue productCatalogue = landingPage.loginApplication("anshika@gmail.com","Iamking@000");
@@ -53,10 +52,16 @@ public class SubmitOrderTest extends BaseTest {
 		
 		Assert.assertTrue(confirmMessage.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
 		
-		
-		
-	
-
 	}
+	
+	@Test(dependsOnMethods= {"submitOrder"})
+	public void OrderHistoryTest()
+	{
+		//"ZARA COAT 3";
+		ProductCatalogue productCatalogue = landingPage.loginApplication("anshika@gmail.com", "Iamking@000");
+		OrderPage ordersPage = productCatalogue.goToOrderPage();
+		Assert.assertTrue(ordersPage.VerifyOrderDisplay(productName));
+		
+}
 
 }
