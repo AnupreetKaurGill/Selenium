@@ -1,6 +1,7 @@
 package automation.TestComponents;
 
 import java.io.File;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -9,8 +10,12 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -87,6 +92,17 @@ public class BaseTest {
 	
 	//{map, map}
 
+	}
+	
+	public String getScreenshot(String testCaseName,WebDriver driver) throws IOException
+	{
+		TakesScreenshot ts = (TakesScreenshot)driver;
+		File source = ts.getScreenshotAs(OutputType.FILE);
+		File file = new File(System.getProperty("user.dir") + "//reports//" + testCaseName + ".png");
+		FileUtils.copyFile(source, file);
+		return System.getProperty("user.dir") + "//reports//" + testCaseName + ".png";
+		
+		
 	}
 	
 	@BeforeMethod(alwaysRun=true)

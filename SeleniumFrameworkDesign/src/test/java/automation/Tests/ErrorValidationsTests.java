@@ -2,6 +2,8 @@ package automation.Tests;
 
 import java.io.IOException;
 
+
+
 import java.time.Duration;
 
 import java.util.List;
@@ -18,6 +20,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automation.TestComponents.BaseTest;
+import automation.TestComponents.Retry;
 import automation.pageobjects.CartPage;
 import automation.pageobjects.CheckoutPage;
 import automation.pageobjects.ConfirmationPage;
@@ -30,7 +33,7 @@ public class ErrorValidationsTests extends BaseTest {
 	
 		// TODO Auto-generated method stub
 	
-	@Test(groups= {"ErrorHandling"})
+	@Test(groups= {"ErrorHandling"}, retryAnalyzer=Retry.class)
 	public void LoginErrorValidation() throws IOException, InterruptedException {
 
 	
