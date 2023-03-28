@@ -3,7 +3,7 @@ package automation.Tests;
 import java.io.IOException;
 
 import java.time.Duration;
-
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -34,15 +34,15 @@ public class SubmitOrderTest extends BaseTest {
 	String productName = "ZARA COAT 3";
 	
 	@Test(dataProvider="getData",groups= {"Purchase"})
-	public void submitOrder(String email, String password, String productName) throws InterruptedException, IOException {
+	public void submitOrder(HashMap<String,String> input) throws InterruptedException, IOException {
 		
 		
-		ProductCatalogue productCatalogue = landingPage.loginApplication(email,password);
+		ProductCatalogue productCatalogue = landingPage.loginApplication(input.get("email"), input.get("password"));
 		List<WebElement>products=productCatalogue.getProductList();
-		productCatalogue.addProductToCart(productName);
+		productCatalogue.addProductToCart(input.get("product"));
 		CartPage cartPage = productCatalogue.goToCartPage();
 		
-		Boolean match = 	cartPage.VerifyProductDisplay(productName);
+		Boolean match = 	cartPage.VerifyProductDisplay(input.get("product"));
 		Assert.assertTrue(match);
 		
 		CheckoutPage checkoutPage = cartPage.goToCheckout();
@@ -65,11 +65,37 @@ public class SubmitOrderTest extends BaseTest {
 		
 }
 	
+	
 	@DataProvider
-	  public Object[][] getData()
+	  public Object[][] getData() throws IOException
 	  {
-	    return new Object[][]  {{"anshika@gmail.com","Iamking@000","ZARA COAT 3"}, {"shetty@gmail.com","Iamking@000","ADIDAS ORIGINAL" } };
-	    
+		List<HashMap<String,String>> data = getJsonDataToMap(System.getProperty("user.dir")+"//src//test//java//automation//Data//PurchaseOrder.json");
+		return new Object[][]  {{data.get(0)}, {data.get(1) } };
+		   
 	  }
+	
+//	@DataProvider
+//	  public Object[][] getData()
+//	  {
+//	    return new Object[][]  {{"anshika@gmail.com","Iamking@000","ZARA COAT 3"}, {"shetty@gmail.com","Iamking@000","ADIDAS ORIGINAL" } };
+//	    
+//	  }
+	
+	//@DataProvider
+//	  public Object[][] getData()
+//	  {
+//		HashMap<String,String> map = new HashMap<String,String>();
+//		map.put("email", "anshika@gmail.com");
+//		map.put("password", "Iamking@000");
+//		map.put("product", "ZARA COAT 3");
+//		
+//		HashMap<String,String> map1 = new HashMap<String,String>();
+//		map1.put("email", "shetty@gmail.com");
+//		map1.put("password", "Iamking@000");
+//		map1.put("product", "ADIDAS ORIGINAL");
+//		  
+//	    return new Object[][]  {{map}, {map1 } };
+//	    
+//	  }
 
 }
