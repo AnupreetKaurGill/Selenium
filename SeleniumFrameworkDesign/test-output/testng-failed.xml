@@ -4,18 +4,6 @@
   <listeners>
     <listener class-name="automation.TestComponents.Listeners"/>
   </listeners>
-  <test thread-count="5" parallel="tests" name="Error Validations Test(failed)">
-    <classes>
-      <class name="automation.Tests.ErrorValidationsTests">
-        <methods>
-          <include name="ProductErrorValidation"/>
-          <include name="tearDown"/>
-          <include name="launchApplication"/>
-          <include name="LoginErrorValidation"/>
-        </methods>
-      </class> <!-- automation.Tests.ErrorValidationsTests -->
-    </classes>
-  </test> <!-- Error Validations Test(failed) -->
   <test thread-count="5" parallel="tests" name="Submit Order Test(failed)">
     <classes>
       <class name="automation.Tests.SubmitOrderTest">
@@ -23,9 +11,20 @@
           <include name="OrderHistoryTest"/>
           <include name="tearDown"/>
           <include name="launchApplication"/>
-          <include name="submitOrder"/>
+          <include name="submitOrder" invocation-numbers="0 1"/>
         </methods>
       </class> <!-- automation.Tests.SubmitOrderTest -->
     </classes>
   </test> <!-- Submit Order Test(failed) -->
+  <test thread-count="5" parallel="tests" name="Error Validations Test(failed)">
+    <classes>
+      <class name="automation.Tests.ErrorValidationsTests">
+        <methods>
+          <include name="ProductErrorValidation"/>
+          <include name="tearDown"/>
+          <include name="launchApplication"/>
+        </methods>
+      </class> <!-- automation.Tests.ErrorValidationsTests -->
+    </classes>
+  </test> <!-- Error Validations Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

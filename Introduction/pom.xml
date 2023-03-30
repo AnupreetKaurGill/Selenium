@@ -11,6 +11,12 @@
     <version>4.7.2</version>
 </dependency>
 
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-http-jdk-client</artifactId>
+    <version>4.8.1</version>
+</dependency>
+
 <!-- https://mvnrepository.com/artifact/org.testng/testng -->
 <dependency>
     <groupId>org.testng</groupId>

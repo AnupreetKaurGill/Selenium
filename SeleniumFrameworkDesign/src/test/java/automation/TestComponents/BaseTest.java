@@ -45,13 +45,14 @@ public class BaseTest {
 						+ "//src//main//java//automation//resources//GlobalData.properties");
 				prop.load(fis);
 		
-				//String browserName = System.getProperty("browser")!=null ? System.getProperty("browser") :prop.getProperty("browser");
-				String browserName =prop.getProperty("browser");
+				String browserName = System.getProperty("browser")!=null ? System.getProperty("browser") :prop.getProperty("browser");
+				//String browserName =prop.getProperty("browser");
+				
 				
 				if (browserName.contains("chrome")) {
 					//ChromeOptions options = new ChromeOptions();
 					WebDriverManager.chromedriver().setup();
-					
+					System.setProperty("webdriver.http.factory", "jdk-http-client");
 //					if(browserName.contains("headless")){
 //					options.addArguments("headless");
 //					}	
@@ -70,7 +71,7 @@ public class BaseTest {
 					System.setProperty("webdriver.edge.driver", "edge.exe");
 					driver = new EdgeDriver();
 				}
-
+				//System.setProperty("webdriver.http.factory", "jdk-http-client");
 				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 				driver.manage().window().maximize();
 				return driver; 
