@@ -4,12 +4,16 @@ import java.io.IOException;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import automation.TestComponents.BaseTest;
+import automation.pageobjects.CartPage;
+import automation.pageobjects.CheckoutPage;
 import automation.pageobjects.ConfirmationPage;
 import automation.pageobjects.LandingPage;
 import automation.pageobjects.ProductCatalogue;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class StepDefinitionImpl extends BaseTest {
@@ -38,6 +42,24 @@ public class StepDefinitionImpl extends BaseTest {
 		productCatalogue.addProductToCart(productName);
 	}
 	
+	@When("^Checkout (.+) and submit the order$")
+	public void checkout_submit_order(String productName)
+	{
+		CartPage cartPage = productCatalogue.goToCartPage();
+
+		Boolean match = cartPage.VerifyProductDisplay(productName);
+		Assert.assertTrue(match);
+		CheckoutPage checkoutPage = cartPage.goToCheckout();
+		checkoutPage.selectCountry("india");
+		 confirmationPage = checkoutPage.submitOrder();
+	}
 	
+	@Then("{string} message is displayed on ConfirmationPage")
+    public void message_displayed_confirmationPage(String string)
+    {
+    	String confirmMessage = confirmationPage.getConfirmationMessage();
+		Assert.assertTrue(confirmMessage.equalsIgnoreCase(string));
+		driver.close();
+    }
 	
 }
