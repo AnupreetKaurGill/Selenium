@@ -7,7 +7,7 @@ Background:
 	Given I landed on Ecommerce Page
  
 
-  @tag2
+  @Regression
   Scenario Outline: Positive Test of Submitting the order
     Given Logged in with username <name> and password <password>
     When I add product <productName> to Cart
